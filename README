@@ -14,7 +14,6 @@ where ? is the day number.
 *This requires that you have a file `session_cookie` that contains a valid session cookie
 from your browser when visiting the adventofcode website*
 
-
 ## Day Execution Times
 No execution time means day is not complete
 
