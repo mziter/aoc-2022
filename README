@@ -15,7 +15,9 @@ where ? is the day number.
 from your browser when visiting the adventofcode website*
 
 ## Day Execution Times
-No execution time means day is not complete
+No execution time means day or part is not complete. These times capture the execution times
+for each part and may not capture some of the initial file i/o. These is because we are mostly
+focused on the execution time of the core logic and algorithms used.
 
 | Day # | Part One | Part Two | 
 | ----- | -------- | -------- | 
