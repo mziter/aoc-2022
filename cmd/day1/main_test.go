@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -50,4 +51,26 @@ func TestPartTwo(t *testing.T) {
 	if want != have {
 		t.Errorf("Wanted answer of %s, but had answer %s", want, have)
 	}
+}
+
+var result string
+
+func BenchmarkPart1(b *testing.B) {
+	var r string
+	for n := 0; n < b.N; n++ {
+		// always record the result to prevent
+		// the compiler eliminating the function call.
+		r = partOne(strings.Split(input, "\n"))
+	}
+	// always store the result to a package level variable
+	// so the compiler cannot eliminate the Benchmark itself.
+	result = r
+}
+
+func BenchmarkPart2(b *testing.B) {
+	var r string
+	for n := 0; n < b.N; n++ {
+		r = partTwo(strings.Split(input, "\n"))
+	}
+	result = r
 }

@@ -5,15 +5,18 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"strings"
 	"time"
-
-	"github.com/mziter/aoc-2022/pkg/ioutil"
 )
 
 //go:embed input.txt
 var input string
 
 // TODO: exercise to make this generic and move to pkg
+// a sorted []int would have been easier, but we can save some
+// performance here since we don't need to reorder the values
+// each time, we just need to know which one is the lowest and
+// therefore the next number to be evicted
 type maxHolder struct {
 	values    []int // n highest values, configured on construction
 	minValIdx int   // index of current lowest value
@@ -56,13 +59,14 @@ func (m *maxHolder) Sum() int {
 }
 
 func main() {
-	lines := ioutil.GetLines(input)
 	fmt.Printf("DAY 1\n")
 	partOneTime := time.Now()
+	lines := strings.Split(input, "\n")
 	fmt.Printf("Part One:       %s\n", partOne(lines))
 	partOneDuration := time.Since(partOneTime)
 	fmt.Printf("Execution time: %s\n", partOneDuration.String())
 	partTwoTime := time.Now()
+	lines = strings.Split(input, "\n")
 	fmt.Printf("Part Two:       %s\n", partTwo(lines))
 	partTwoDuration := time.Since(partTwoTime)
 	fmt.Printf("Execution time: %s\n", partTwoDuration.String())

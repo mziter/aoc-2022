@@ -25,6 +25,6 @@ No execution time means day or part is not complete. These times capture the exe
 for each part and may not capture some of the initial file i/o. These is because we are mostly
 focused on the execution time of the core logic and algorithms used.
 
-| Day # | Part One | Part Two | 
-| ----- | -------- | -------- | 
-| 1     | 79.71 us | 60.89 us | 
+| Day # |  Part One  |   Part Two  | 
+| ----: |  -------:  |  -------:   | 
+| 1     |  71.65 µs  |  71.22 µs   | 
