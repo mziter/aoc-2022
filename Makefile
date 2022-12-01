@@ -6,8 +6,5 @@ new:
 	mkdir -p ${dayDir}
 	touch ${dayDir}/main.go
 	@echo "package main\n" >> ${dayDir}/main.go
-	touch ${dayDir}/partOne.go
-	@echo "package main\n" >> ${dayDir}/partOne.go
-	touch ${dayDir}/partTwo.go
-	@echo "package main\n" >> ${dayDir}/partTwo.go
+	@echo "Downloading input..." 
 	curl -b session=${session_cookie} https://adventofcode.com/${year}/day/${day}/input --output ${dayDir}/input.txt

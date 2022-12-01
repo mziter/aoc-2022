@@ -56,13 +56,16 @@ func (m *maxHolder) Sum() int {
 }
 
 func main() {
-	start := time.Now()
 	lines := ioutil.GetLines(input)
 	fmt.Printf("DAY 1\n")
+	partOneTime := time.Now()
 	fmt.Printf("Part One:       %s\n", partOne(lines))
+	partOneDuration := time.Since(partOneTime)
+	fmt.Printf("Execution time: %s\n", partOneDuration.String())
+	partTwoTime := time.Now()
 	fmt.Printf("Part Two:       %s\n", partTwo(lines))
-	duration := time.Since(start)
-	fmt.Printf("Execution time: %s\n", duration.String())
+	partTwoDuration := time.Since(partTwoTime)
+	fmt.Printf("Execution time: %s\n", partTwoDuration.String())
 }
 
 func partOne(lines []string) string {
