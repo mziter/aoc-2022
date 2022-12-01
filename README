@@ -1,0 +1,23 @@
+# Advent of Code 2022 using Go
+
+## Project Structure
+Project is attempting to keep the simplest layout possible. Each day can be run
+independently 
+
+## Automation
+Very little is automated, however you can automatically create a new day folder
+and download the input for that day using the Makefile from the root of the project
+where ? is the day number.
+
+`make new year=2022 day=?`
+
+*This requires that you have a file `session_cookie` that contains a valid session cookie
+from your browser when visiting the adventofcode website*
+
+
+## Day Execution Times
+No execution time means day is not complete
+
+| Day # | Part One | Part Two | 
+| ----- | -------- | -------- | 
+| 1     | 79.71 us | 60.89 us | 
