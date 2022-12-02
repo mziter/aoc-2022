@@ -4,7 +4,6 @@ import (
 	_ "embed"
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 type Shape = byte
@@ -32,7 +31,7 @@ func shapeScore(shape Shape) int {
 	case bZ:
 		return 3
 	default:
-		panic("Something went wrong")
+		panic(fmt.Sprintf("Something went wrong, received shape=%s", string(shape)))
 	}
 }
 
@@ -104,28 +103,38 @@ func roundScore(oppShape, ourShape Shape) int {
 
 func main() {
 	fmt.Printf("DAY 2\n")
-	lines := strings.Split(input, "\n")
-	fmt.Printf("partOne: %s\n", partOne(lines))
-	fmt.Printf("partTwo: %s\n", partTwo(lines))
+	fmt.Printf("partOne: %s\n", partOne(input))
+	fmt.Printf("partTwo: %s\n", partTwo(input))
 }
 
-func partOne(lines []string) string {
+func partOne(content string) string {
 	score := 0
-	for _, line := range lines {
-		signs := strings.Split(line, " ")
-		score += roundScore(signs[0][0], signs[1][0])
+	for i, c := range content {
+		if c == '\n' {
+			score += roundScore(content[i-3], content[i-1])
+		}
+		if i == len(content)-1 {
+			score += roundScore(content[i-2], content[i])
+		}
 	}
 	return strconv.Itoa(score)
 }
 
-func partTwo(lines []string) string {
+func partTwo(content string) string {
 	score := 0
-	for _, line := range lines {
-		signs := strings.Split(line, " ")
-		oppShape := signs[0][0]
-		desiredOutcome := signs[1][0]
-		signToPlay := desiredShape(oppShape, desiredOutcome)
-		score += roundScore(oppShape, signToPlay)
+	for i, c := range content {
+		if c == '\n' {
+			oppShape := content[i-3]
+			desiredOutcome := content[i-1]
+			signToPlay := desiredShape(oppShape, desiredOutcome)
+			score += roundScore(oppShape, signToPlay)
+		}
+		if i == len(content)-1 {
+			oppShape := content[i-2]
+			desiredOutcome := content[i]
+			signToPlay := desiredShape(oppShape, desiredOutcome)
+			score += roundScore(oppShape, signToPlay)
+		}
 	}
 	return strconv.Itoa(score)
 }
