@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strings"
 	"testing"
 )
 
@@ -22,7 +21,7 @@ func BenchmarkPartOne(b *testing.B) {
 func BenchmarkPartTwo(b *testing.B) {
 	var r string
 	for n := 0; n < b.N; n++ {
-		r = partTwo(strings.Split(input, "\n"))
+		r = partTwo(input)
 	}
 	result = r
 }

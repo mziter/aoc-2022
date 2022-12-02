@@ -30,4 +30,4 @@ are very much subject to wide degrees of changes depending on many external fact
 | Day # |  Part One  |   Part Two  | 
 | ----: |  -------:  |  -------:   | 
 | 1     |  66.16 µs  |  66.61 µs   | 
-| 2     | 376.41 µs  | 363.78 µs   |
+| 2     |  51.33 µs  |  58.84 µs   |
