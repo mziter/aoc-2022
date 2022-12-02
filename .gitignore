@@ -10,6 +10,8 @@
 *.orig
 *.rej
 *.exe
+*.test
+*.prof
 .*.swp
 core
 *.cgo*.go
