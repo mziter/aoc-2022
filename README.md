@@ -28,3 +28,4 @@ focused on the execution time of the core logic and algorithms used.
 | Day # |  Part One  |   Part Two  | 
 | ----: |  -------:  |  -------:   | 
 | 1     |  71.65 µs  |  71.22 µs   | 
+| 2     | 376.41 µs  | 363.78 µs   |
