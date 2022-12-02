@@ -12,52 +12,6 @@ import (
 //go:embed input.txt
 var input string
 
-// TODO: exercise to make this generic and move to pkg
-// a sorted []int would have been easier, but we can save some
-// performance here since we don't need to reorder the values
-// each time, we just need to know which one is the lowest and
-// therefore the next number to be evicted
-type maxHolder struct {
-	values    []int // n highest values, configured on construction
-	minValIdx int   // index of current lowest value
-}
-
-func newMaxHolder(capacity int) *maxHolder {
-	return &maxHolder{
-		values:    make([]int, capacity),
-		minValIdx: 0,
-	}
-}
-
-func (m *maxHolder) Add(n int) bool {
-	// see if new value is greater than our lowest value and if so, replace it
-	if n > m.values[m.minValIdx] {
-		m.values[m.minValIdx] = n
-		// set the new smallest value
-		var min int
-		for i, v := range m.values {
-			if i == 0 {
-				min = v
-				m.minValIdx = i
-				continue
-			}
-			if v < min {
-				m.minValIdx = i
-			}
-		}
-		return true
-	}
-	return false
-}
-
-func (m *maxHolder) Sum() int {
-	sum := 0
-	for _, v := range m.values {
-		sum += v
-	}
-	return sum
-}
-
 func main() {
 	fmt.Printf("DAY 1\n")
 	partOneTime := time.Now()
@@ -85,11 +39,22 @@ func partOne(lines []string) string {
 
 func partTwo(lines []string) string {
 	sums := sumByElf(lines)
-	mh := newMaxHolder(3)
+	top := make([]int, 3)
+	minIdx := 0
 	for _, s := range sums {
-		mh.Add(s)
+		if s > top[minIdx] {
+			top[minIdx] = s
+			// find new min
+			min := top[0]
+			for i := 0; i < 3; i++ {
+				if top[i] <= min {
+					minIdx = i
+					min = top[i]
+				}
+			}
+		}
 	}
-	return strconv.Itoa(mh.Sum())
+	return strconv.Itoa(top[0] + top[1] + top[2])
 }
 
 func sumByElf(lines []string) []int {

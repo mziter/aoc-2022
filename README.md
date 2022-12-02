@@ -20,12 +20,14 @@ make new year=2022 day=?
 *This requires that you have a file `session_cookie` in the root folder that contains a valid session cookie
 from your browser when visiting the adventofcode website*
 
-## Day Status Execution Times
+## Day Status and Execution Times
 No execution time means day or part is not complete. These times capture the execution times
-for each part and may not capture some of the initial file i/o. These is because we are mostly
-focused on the execution time of the core logic and algorithms used.
+for each part. These are meant to be rough estimate values to observe orders of magnitude and
+are very much subject to wide degrees of changes depending on many external factors.
+
+`cpu: Intel(R) Core(TM) i5-4258U CPU @ 2.40GHz`
 
 | Day # |  Part One  |   Part Two  | 
 | ----: |  -------:  |  -------:   | 
-| 1     |  71.65 µs  |  71.22 µs   | 
+| 1     |  66.16 µs  |  66.61 µs   | 
 | 2     | 376.41 µs  | 363.78 µs   |

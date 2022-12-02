@@ -55,7 +55,7 @@ func TestPartTwo(t *testing.T) {
 
 var result string
 
-func BenchmarkPart1(b *testing.B) {
+func BenchmarkPartOne(b *testing.B) {
 	var r string
 	for n := 0; n < b.N; n++ {
 		// always record the result to prevent
@@ -67,7 +67,7 @@ func BenchmarkPart1(b *testing.B) {
 	result = r
 }
 
-func BenchmarkPart2(b *testing.B) {
+func BenchmarkPartTwo(b *testing.B) {
 	var r string
 	for n := 0; n < b.N; n++ {
 		r = partTwo(strings.Split(input, "\n"))
