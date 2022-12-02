@@ -6,24 +6,19 @@ import (
 	"log"
 	"strconv"
 	"strings"
-	"time"
 )
 
 //go:embed input.txt
 var input string
 
+// Could probably improve performance like in Day 2 by iterating through all the input instead
+// of allocating new strings. Don't feel like it's worth it at this point.
 func main() {
 	fmt.Printf("DAY 1\n")
-	partOneTime := time.Now()
 	lines := strings.Split(input, "\n")
 	fmt.Printf("Part One:       %s\n", partOne(lines))
-	partOneDuration := time.Since(partOneTime)
-	fmt.Printf("Execution time: %s\n", partOneDuration.String())
-	partTwoTime := time.Now()
 	lines = strings.Split(input, "\n")
 	fmt.Printf("Part Two:       %s\n", partTwo(lines))
-	partTwoDuration := time.Since(partTwoTime)
-	fmt.Printf("Execution time: %s\n", partTwoDuration.String())
 }
 
 func partOne(lines []string) string {
