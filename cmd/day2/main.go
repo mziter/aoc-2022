@@ -11,16 +11,25 @@ type Shape = byte
 
 type Outcome = byte
 
+const (
+	bA = byte('A')
+	bB = byte('B')
+	bC = byte('C')
+	bX = byte('X')
+	bY = byte('Y')
+	bZ = byte('Z')
+)
+
 //go:embed input.txt
 var input string
 
 func shapeScore(shape Shape) int {
 	switch shape {
-	case byte('X'):
+	case bX:
 		return 1
-	case byte('Y'):
+	case bY:
 		return 2
-	case byte('Z'):
+	case bZ:
 		return 3
 	default:
 		panic("Something went wrong")
@@ -28,62 +37,62 @@ func shapeScore(shape Shape) int {
 }
 
 func desiredShape(oppShape, outcome Outcome) Shape {
-	if oppShape == byte('A') && outcome == byte('X') {
-		return byte('Z')
+	if oppShape == bA && outcome == bX {
+		return bZ
 	}
-	if oppShape == byte('A') && outcome == byte('Y') {
-		return byte('X')
+	if oppShape == bA && outcome == bY {
+		return bX
 	}
-	if oppShape == byte('A') && outcome == byte('Z') {
-		return byte('Y')
+	if oppShape == bA && outcome == bZ {
+		return bY
 	}
-	if oppShape == byte('B') && outcome == byte('X') {
-		return byte('X')
+	if oppShape == bB && outcome == bX {
+		return bX
 	}
-	if oppShape == byte('B') && outcome == byte('Y') {
-		return byte('Y')
+	if oppShape == bB && outcome == bY {
+		return bY
 	}
-	if oppShape == byte('B') && outcome == byte('Z') {
-		return byte('Z')
+	if oppShape == bB && outcome == bZ {
+		return bZ
 	}
-	if oppShape == byte('C') && outcome == byte('X') {
-		return byte('Y')
+	if oppShape == bC && outcome == bX {
+		return bY
 	}
-	if oppShape == byte('C') && outcome == byte('Y') {
-		return byte('Z')
+	if oppShape == bC && outcome == bY {
+		return bZ
 	}
-	if oppShape == byte('C') && outcome == byte('Z') {
-		return byte('X')
+	if oppShape == bC && outcome == bZ {
+		return bX
 	}
 	panic("Something went wrong")
 }
 
 func outcome(oppShape, ourShape Shape) int {
-	if oppShape == byte('A') && ourShape == byte('X') {
+	if oppShape == bA && ourShape == bX {
 		return 3
 	}
-	if oppShape == byte('A') && ourShape == byte('Y') {
+	if oppShape == bA && ourShape == bY {
 		return 6
 	}
-	if oppShape == byte('A') && ourShape == byte('Z') {
+	if oppShape == bA && ourShape == bZ {
 		return 0
 	}
-	if oppShape == byte('B') && ourShape == byte('X') {
+	if oppShape == bB && ourShape == bX {
 		return 0
 	}
-	if oppShape == byte('B') && ourShape == byte('Y') {
+	if oppShape == bB && ourShape == bY {
 		return 3
 	}
-	if oppShape == byte('B') && ourShape == byte('Z') {
+	if oppShape == bB && ourShape == bZ {
 		return 6
 	}
-	if oppShape == byte('C') && ourShape == byte('X') {
+	if oppShape == bC && ourShape == bX {
 		return 6
 	}
-	if oppShape == byte('C') && ourShape == byte('Y') {
+	if oppShape == bC && ourShape == bY {
 		return 0
 	}
-	if oppShape == byte('C') && ourShape == byte('Z') {
+	if oppShape == bC && ourShape == bZ {
 		return 3
 	}
 	panic("Something went wrong")
