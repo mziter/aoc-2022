@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	_ "embed"
 	"fmt"
 	"strconv"
@@ -40,73 +41,65 @@ func lineLengths(content []byte) []int {
 }
 
 func partTwo(content []byte) string {
+	lines := bytes.Split(content, []byte{'\n'})
 	line := 0
 	sum := 0
 	lineSeen := make([]int, 52)
 	found := false
-	for _, b := range content {
-		if b == byte('\n') {
-			if line == 2 { // last of group: reset
-				line = 0
-				found = false
-				for i := 0; i < 52; i++ {
-					lineSeen[i] = 0
+	for _, l := range lines {
+		for _, b := range l {
+			if !found {
+				p := priority(b)
+				seenLastLine := lineSeen[p-1]
+				if line == 2 && seenLastLine == 2 {
+					sum += p
+					found = true
 				}
-				continue
-			} else {
-				line++
-				continue
+				if seenLastLine == line {
+					lineSeen[p-1] = line + 1
+				}
 			}
 		}
-		if !found {
-			p := priority(b)
-			seenLastLine := lineSeen[p-1]
-			if line == 2 && seenLastLine == 2 {
-				sum += p
-				found = true
+		if line == 2 { // last of group: reset
+			line = 0
+			found = false
+			for i := 0; i < 52; i++ {
+				lineSeen[i] = 0
 			}
-			if seenLastLine == line {
-				lineSeen[p-1] = line + 1
-			}
+			continue
 		}
+		line++
 	}
 	return strconv.Itoa(sum)
 }
 
 func partOne(content []byte) string {
-	lengths := lineLengths(content)
-	line := 0
-	linePos := 0
+	lines := bytes.Split(content, []byte{'\n'})
 	sum := 0
 	seen := make([]int, 52)
 	found := false
-	for _, b := range content {
-		halfLen := lengths[line] / 2
-		// first compartment
-		if linePos < halfLen {
-			p := priority(b)
-			seen[p-1] = 1
-		}
-		// second compartment
-		if linePos >= halfLen && !found {
-			p := priority(b)
-			if seen[p-1] == 1 {
-				sum += p
-				found = true
+	for _, l := range lines {
+		halfLen := len(l) / 2
+		for linePos, b := range l {
+			// first compartment
+			if linePos < halfLen {
+				p := priority(b)
+				seen[p-1] = 1
 			}
-		}
-		if b == byte('\n') {
-			// reset array for next line
-			for i := 0; i < 52; i++ {
-				seen[i] = 0
+			// second compartment
+			if linePos >= halfLen && !found {
+				p := priority(b)
+				if seen[p-1] == 1 {
+					sum += p
+					found = true
+				}
 			}
-			line++
-			linePos = 0
-			found = false
-			continue
-		} else {
 			linePos++
 		}
+		for i := 0; i < 52; i++ {
+			seen[i] = 0
+		}
+		found = false
 	}
 	return strconv.Itoa(sum)
 }
