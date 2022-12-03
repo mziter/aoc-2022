@@ -14,6 +14,7 @@ func main() {
 	fmt.Println("DAY 3")
 	fmt.Println("Part I:  ", partOne(input))
 	fmt.Println("Part II: ", partTwo(input))
+	fmt.Println("Part II(async): ", partTwoAsync(input))
 }
 
 func priority(b byte) int {
@@ -38,6 +39,46 @@ func lineLengths(content []byte) []int {
 		}
 	}
 	return lengths
+}
+
+func partTwoAsync(content []byte) string {
+	lines := bytes.Split(content, []byte{'\n'})
+	nGroups := len(lines) / 3
+	resultC := make(chan int, nGroups)
+	defer close(resultC)
+	for i := 0; i < len(lines)-3; i = i + 3 {
+		go partTwoWork(lines[i:i+4], resultC)
+	}
+	nResults := 0
+	sum := 0
+	for {
+		for r := range resultC {
+			nResults++
+			sum += r
+			if nResults == nGroups {
+				return strconv.Itoa(sum)
+			}
+		}
+	}
+}
+
+func partTwoWork(lines [][]byte, resultC chan int) {
+	line := 0
+	lineSeen := make([]int, 52)
+	for _, l := range lines {
+		for _, b := range l {
+			p := priority(b)
+			seenLastLine := lineSeen[p-1]
+			if line == 2 && seenLastLine == 2 {
+				resultC <- p
+				return
+			}
+			if seenLastLine == line {
+				lineSeen[p-1] = line + 1
+			}
+		}
+		line++
+	}
 }
 
 func partTwo(content []byte) string {
