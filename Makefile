@@ -1,5 +1,5 @@
 dayDir := cmd/day${day}
-session_cookie := $(shell cat session.dat)
+session_cookie := $(shell cat session_cookie)
 
 new:
 	@echo "Creating day directory..."
