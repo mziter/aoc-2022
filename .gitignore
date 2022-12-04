@@ -12,6 +12,7 @@
 *.exe
 *.test
 *.prof
+*.out
 .*.swp
 core
 *.cgo*.go

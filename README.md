@@ -32,3 +32,4 @@ are very much subject to wide degrees of changes depending on many external fact
 | 1     |  66.16 µs  |  66.61 µs   | 
 | 2     |  51.33 µs  |  58.84 µs   |
 | 3     |  51.24 µs  |  83.03 µs   |
+| 4     | 116.55 µs  | 116.33 µs   |
