@@ -9,6 +9,13 @@ go run ./cmd/day1
 go build ./cmd/day5
 ```
 
+## Goals 
+My goal for this year is to focus on performance. I was recently inspired by
+[Casey Muratori's Explanation of Non-Pessimization](https://www.youtube.com/watch?v=pgoetgxecw8) and wanted to really
+focus on writing fast code by avoiding unnecessary work. 
+
+You can find some design write-ups for each day in `/docs`.
+
 ## Automation
 You can automatically create a new day folder and download the input for that day using
 the Makefile from the root of the project where ? is the day number.
