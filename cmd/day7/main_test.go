@@ -2,52 +2,7 @@ package main
 
 import (
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
-
-func simpleFS() *FSNode {
-	a := &FSNode{
-		name:     "a",
-		size:     10,
-		isDir:    false,
-		children: make([]*FSNode, 0),
-	}
-
-	c := &FSNode{
-		name:     "c",
-		size:     1,
-		isDir:    false,
-		children: make([]*FSNode, 0),
-	}
-
-	b := &FSNode{
-		name:  "b",
-		size:  0,
-		isDir: true,
-		children: []*FSNode{
-			c,
-		},
-	}
-
-	return &FSNode{
-		name:  "/",
-		size:  0,
-		isDir: true,
-		children: []*FSNode{
-			a, b,
-		},
-	}
-}
-
-func TestFilesystem(t *testing.T) {
-	root := simpleFS()
-	root.CalculateSize()
-	want := 11
-	got := root.size
-	assert.Equal(t, want, got)
-	root.PrettyPrint()
-}
 
 var result string
 
