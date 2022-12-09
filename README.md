@@ -42,3 +42,5 @@ are very much subject to wide degrees of changes depending on many external fact
 | 4     | 116.55 µs  | 116.33 µs   |
 | 5     |  81.96 µs  |  91.23 µs   |
 | 6     |  18.37 µs  |  27.27 µs   |
+| 7     | 182.39 µs  | 181.52 µs   |
+| 8     |  89.55 µs  | 211.81 µs   |
