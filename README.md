@@ -45,3 +45,4 @@ are very much subject to wide degrees of changes depending on many external fact
 | 7     |  182.39 µs  |  181.52 µs  |
 | 8     |   89.55 µs  |  211.81 µs  |
 | 9     |  545.21 µs  |    1.24 ms  |
+| 10    |    7.67 µs  |   17.13 ms  |
