@@ -55,19 +55,18 @@ func (vs *VideoSystem) writePixel() {
 }
 
 func (vs *VideoSystem) Tick() bool {
-	// if busy see if execution is finished
-	// if finished execute and continue, else
-	// increment cycle and return
-
+	// start executing next instructions
 	if !vs.busy {
 		ok := vs.executeNext()
 		if !ok {
 			return false // no more instructions to execute
 		}
 	}
+	// write pixels
 	if vs.writePixels {
 		vs.writePixel()
 	}
+	// if an execution ends now, lets update the register before moving to next cycle
 	if vs.execDone == vs.cycle {
 		vs.x += vs.currentInst
 		vs.busy = false
