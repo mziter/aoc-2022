@@ -13,6 +13,7 @@
 *.test
 *.prof
 *.out
+*.pdf
 .*.swp
 core
 *.cgo*.go
