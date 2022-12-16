@@ -49,5 +49,6 @@ are very much subject to wide degrees of changes depending on many external fact
 | 11    |  111.09 µs  |   85.37 ms  |
 | 12    |  246.17 µs  |  329.54 µs  |
 | 13*   |    2.53 ms  |    6.89 ms  |
+| 14    |  917.51 µs  |    5.54 ms  |
 
-> Days marked with * were heavily inspired by *cough cough* someone else solution and are not entirely my own.
+> Days marked with * were "heavily inspired" *cough cough* by someone else solution and are not entirely my own.
